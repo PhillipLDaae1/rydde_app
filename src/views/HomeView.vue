@@ -37,7 +37,7 @@ console.log(tasksQuery)
 
 <template>
   <main>
-    <h1>This is the homescreen</h1>
+    <h1>Velkommen til hjem-skjermen</h1>
   </main>
 </template>
 
