@@ -1,6 +1,6 @@
 <script>
-import NavBar from './components/NavBar.vue'
-import HomeView from './views/HomeView.vue'
+import NavBar from '/ryddeApp/components/NavBar.vue'
+import HomeView from '/ryddeApp/views/HomeView.vue'
 export default {
   components: {
     NavBar,
