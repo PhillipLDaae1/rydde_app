@@ -130,9 +130,11 @@
   .no_icon {
     display: none;
     visibility: hidden;
-    transition: 0.5s ease;
   }
   
+  .menu_icon {
+    transition: 0.5s ease;
+  }
   </style>
   
   <script>
