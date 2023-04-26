@@ -1,10 +1,11 @@
 <script>
-
+  
 </script>
 
 <template>
-  <main>
-    <h1>Velkommen</h1>
-  </main>
+    <h1>Oppgaver</h1>
 </template>
 
+<style>
+
+</style>

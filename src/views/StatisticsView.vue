@@ -3,8 +3,9 @@
 </script>
 
 <template>
-  <main>
-    <h1>Velkommen</h1>
-  </main>
+    <h1>Statistikk</h1>
 </template>
 
+<style>
+
+</style>

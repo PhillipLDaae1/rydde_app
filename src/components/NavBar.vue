@@ -1,7 +1,9 @@
 <template>
     <nav class=""> 
       <div class="logo">
-        <span class="logo_name">Rydde App</span>
+        <router-link class="name_to_home" to="/">
+          <span class="logo_name">Rydde App</span>
+        </router-link>
         <i  id="menuIcon1" class='bx bx-menu menu_icon'></i> 
       </div>
   
@@ -20,13 +22,13 @@
                 </router-link>
               </li>
               <li class="list">
-                <router-link class="nav_link" to="/">
+                <router-link class="nav_link" to="/tasks">
                   <i class='bx bx-task sb_icon'></i>
-                  <span>Oppgaver</span>
+                  <span>Oppgaver</span> 
                 </router-link>
               </li>
               <li class="list">
-                <router-link class="nav_link" to="/">
+                <router-link class="nav_link" to="/statistics">
                   <i class='bx bx-diamond sb_icon' ></i>
                   <span>Statistikk</span>
                 </router-link>
@@ -40,6 +42,11 @@
   </template>
   
   <style>
+.name_to_home {
+  text-decoration: none;
+  color: black;
+}
+
   .logo {
     display: flex;
     flex-direction: row;
