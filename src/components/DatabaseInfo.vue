@@ -34,3 +34,7 @@ onMounted(() => {
 
 console.log(tasksQuery)
 </script>
+
+<template>
+  
+</template>
