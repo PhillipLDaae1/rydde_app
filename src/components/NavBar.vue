@@ -50,7 +50,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
+* {
+  z-index: 10;
+}
 .name_to_home {
   text-decoration: none;
   color: black;
@@ -95,6 +99,8 @@ nav .sidebar.open {
 
 .sidebar .sidebar_content {
   padding: 1rem 0.5rem;
+  height: 100vh;
+  background-color: white;
 }
 
 .sidebar_content ul {

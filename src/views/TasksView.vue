@@ -3,7 +3,7 @@
       <h1>Users</h1>
       <ul>
         <li v-for="user in data.users" :key="user.id">
-          {{ user.name }}
+          {{ user.name }} - {{ user.totalPoints }} points
         </li>
       </ul>
   
@@ -21,10 +21,14 @@
         </li>
       </ul>
     </div>
+    <div>
+      <TaskSelector />
+    </div>
   </template>
   
   <script>
   import firebaseData from "../firebase/firebase.js";
+  import TaskSelector from '../components/TaskSelector.vue';
   
   export default {
     data() {
@@ -32,6 +36,10 @@
         data: firebaseData,
       };
     },
+
+    components: {
+      TaskSelector,
+    }
   };
   </script>
   

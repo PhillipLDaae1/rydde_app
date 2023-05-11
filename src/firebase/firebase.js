@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, doc, updateDoc, addDoc, arrayUnion } from "firebase/firestore";
 
 const firebaseConfig = {
   // your firebase config object here
@@ -33,15 +33,29 @@ const doneRef = collection(db, "done");
 const doneSnapshot = await getDocs(doneRef);
 const done = doneSnapshot.docs.map((doc) => doc.data());
 
+// Referance to the collections in my database
+const tasksCollection = collection(db, 'tasks')
+const usersCollection = collection(db, 'users')
+const doneCollection = collection(db, 'done')
+
 export {
   auth,
-  db
+  db,
+  collection,
+  getDocs,
+  doc,
+  updateDoc,
+  addDoc,
+  arrayUnion,
 }
 
 export default {
   tasks,
   users,
   done,
+  tasksCollection,
+  usersCollection,
+  doneCollection,
 };
 
 
