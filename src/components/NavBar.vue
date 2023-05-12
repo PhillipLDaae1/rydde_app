@@ -18,20 +18,27 @@
           <li class="list">
             <router-link class="nav_link" to="/">
               <i class='bx bx-home sb_icon' ></i>
-              <span>Hjem</span>
+              <span class="nav_link_name">Hjem</span>
             </router-link>
           </li>
           <li class="list">
             <router-link class="nav_link" to="/tasks">
               <i class='bx bx-task sb_icon'></i>
-              <span>Oppgaver</span>
+              <span class="nav_link_name">Oppgaver</span>
             </router-link>
           </li>
           <li class="list">
             <router-link class="nav_link" to="/statistics">
               <i class='bx bx-diamond sb_icon' ></i>
-              <span>Statistikk</span>
+              <span class="nav_link_name">Statistikk</span>
             </router-link>
+          </li>
+        </ul>
+        <ul>
+          <li class="list">
+            <button @click="clearCookies()">
+               <span class="nav_link_name">Log ut</span>
+            </button>
           </li>
         </ul>
       </div>
@@ -47,6 +54,21 @@ export default {
       isMenuOpen: false,
     };
   },
+
+  methods: {
+    clearCookies() {
+      const cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+
+    window.location.reload();
+    }
+  }
 };
 </script>
 
@@ -54,6 +76,7 @@ export default {
 
 * {
   z-index: 10;
+  background-color: rgb(34, 34, 34);
 }
 .name_to_home {
   text-decoration: none;
@@ -76,6 +99,7 @@ export default {
 .bx {
   font-size: 36px;
   cursor: pointer;
+  background-color: rgb(46, 46, 46);
 }
 
 .logo_name {
@@ -89,8 +113,9 @@ nav .sidebar {
   height: 70px;
   width: 260px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   z-index: 5;
+  background-color: rgb(36, 36, 36);
 }
 
 nav .sidebar.open {
@@ -100,7 +125,7 @@ nav .sidebar.open {
 .sidebar .sidebar_content {
   padding: 1rem 0.5rem;
   height: 100vh;
-  background-color: white;
+  background-color: rgb(34, 34, 34);
 }
 
 .sidebar_content ul {
@@ -116,13 +141,17 @@ nav .sidebar.open {
   display: flex;
   align-items: center;
   text-decoration: none;
-  background-color: whitesmoke;
+  background-color: rgb(46, 46, 46);
   padding: 0.8rem 0.5rem;
   border-radius: 8px;
   width: calc(100% - 1rem);
   font-size: 22px;
   color: #707070;
   transition: 0.5s ease-out;
+}
+
+.nav_link :hover {
+  background-color: rgb(163, 97, 169);
 }
 
 .sb_icon {
@@ -132,7 +161,7 @@ nav .sidebar.open {
 }
 
 .nav_link:hover {
-  background-color: rgb(178, 202, 255);
+  background-color: rgb(163, 97, 169);
 }
 
 .overlay {
@@ -154,5 +183,10 @@ nav .sidebar.open {
 
 .menu_icon {
   transition: 0.5s ease;
+  background-color: rgb(36, 36, 36);
+}
+
+.nav_link_name {
+  background-color: rgb(46, 46, 46);
 }
 </style>

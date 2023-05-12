@@ -22,6 +22,11 @@
 </template>
 
 <style>
+* {
+  background-color: #121212;
+  color: whitesmoke;
+  font-family: 'Wix Madefor Display', sans-serif;
+}
 
 </style>
 

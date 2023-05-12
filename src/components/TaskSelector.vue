@@ -1,24 +1,65 @@
 <template>
-    <div>
-      <h2>Task List</h2>
-      <ul>
-        <li v-for="task in tasks" :key="task.id">
-          {{ task.name }}
-          <button @click="markTaskAsDone(task.id)">Mark as Done</button>
-        </li>
-      </ul>
+    <div class="container">
+      <h2>Marker oppgaver som gjort</h2>
+      <select class="task-dropdown" v-model="selectedTask">
+        <option v-for="task in tasks" :value="task.id" :key="task.id">{{ task.name }} - {{ task.points }} poeng</option>
+      </select>
+      <button class="mark-button" @click="markTaskAsDone(selectedTask)">Mark as Done</button>
     </div>
   </template>
   
-  <script>
+  <style scoped>
 
-import { db } from '../firebase/firebase.js';
-  import { collection, getDocs, updateDoc, addDoc, doc} from 'firebase/firestore';
+  * {
+    background-color: rgb(36, 36, 36);
+  }
+  
+  .container {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(46, 46, 46);
+    color: #fff;
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  .task-dropdown {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #363636;
+    color: #fff;
+  }
+  
+  .mark-button {
+    padding: 8px 16px;
+    background-color: rgb(163, 97, 169);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .mark-button:hover {
+    background-color: #45a049;
+  }
+  
+  </style>
+  
+  
+  <script>
+  import { db } from '../firebase/firebase.js';
+  import { collection, getDocs, updateDoc, addDoc, doc } from 'firebase/firestore';
   
   export default {
     data() {
       return {
         tasks: [],
+        selectedTask: null,
       };
     },
     mounted() {
@@ -34,7 +75,7 @@ import { db } from '../firebase/firebase.js';
         }
       },
       async markTaskAsDone(taskID) {
-        const userID = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        const userID = parseInt(document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1"), 10);
   
         try {
           await addDoc(collection(db, 'done'), {
@@ -51,5 +92,4 @@ import { db } from '../firebase/firebase.js';
     },
   };
   </script>
-  
   
