@@ -1,4 +1,22 @@
-<template>
+<script>
+  export default {
+    data() {
+      return {
+        selectedUser: "",
+      };
+    },
+    methods: {
+      login() {
+        // Lagre valget bruker i cookies
+        document.cookie = `user=${this.selectedUser}; path=/`;
+        // Redirect til appen
+        this.$router.push("/");
+      },
+    },
+  };
+  </script>
+  
+  <template>
     <div>
       <h2>Vennligst velg bruker:</h2>
       <label>
@@ -13,21 +31,5 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    data() {
-      return {
-        selectedUser: "",
-      };
-    },
-    methods: {
-      login() {
-        // Save the selected user in cookies
-        document.cookie = `user=${this.selectedUser}; path=/`;
-        // Redirect to the app
-        this.$router.push("/");
-      },
-    },
-  };
-  </script>
+  
   

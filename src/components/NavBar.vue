@@ -1,52 +1,3 @@
-<template>
-  <nav class="">
-    <div class="logo">
-      <router-link class="name_to_home" to="/">
-        <span class="logo_name">Rydde App</span>
-      </router-link>
-      <i @click="isMenuOpen = !isMenuOpen" class='bx bx-menu menu_icon' v-if="!isMenuOpen"></i>
-    </div>
-
-    <div class="sidebar" :class="{ open: isMenuOpen }">
-      <div class="logo">
-        <span class="logo_name">Rydde App</span>
-        <i @click="isMenuOpen = !isMenuOpen" class='bx bx-menu menu_icon'></i>
-      </div>
-
-      <div class="sidebar_content">
-        <ul class="lists">
-          <li class="list">
-            <router-link class="nav_link" to="/">
-              <i class='bx bx-home sb_icon' ></i>
-              <span class="nav_link_name">Hjem</span>
-            </router-link>
-          </li>
-          <li class="list">
-            <router-link class="nav_link" to="/tasks">
-              <i class='bx bx-task sb_icon'></i>
-              <span class="nav_link_name">Oppgaver</span>
-            </router-link>
-          </li>
-          <li class="list">
-            <router-link class="nav_link" to="/statistics">
-              <i class='bx bx-diamond sb_icon' ></i>
-              <span class="nav_link_name">Statistikk</span>
-            </router-link>
-          </li>
-        </ul>
-        <ul>
-          <li class="list">
-            <button @click="clearCookies()">
-               <span class="nav_link_name">Log ut</span>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <section v-show="isMenuOpen" class="overlay" v-if="isMenuOpen" @click="isMenuOpen = false"></section>
-</template>
-
 <script>
 export default {
   data() {
@@ -56,21 +7,76 @@ export default {
   },
 
   methods: {
+    toggleSidebar() {
+      this.isMenuOpen = !this.isMenuOpen;
+    },
+    closeSidebar() {
+      this.isMenuOpen = false;
+    },
     clearCookies() {
       const cookies = document.cookie.split(";");
 
-    for (let i = 0; i < cookies.length; i++) {
+      for (let i = 0; i < cookies.length; i++) {
         const cookie = cookies[i];
         const eqPos = cookie.indexOf("=");
         const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
+      }
 
-    window.location.reload();
-    }
-  }
+      window.location.reload();
+    },
+  },
 };
 </script>
+
+<template>
+  <nav>
+    <div class="logo">
+      <router-link class="name_to_home" to="/" @click="closeSidebar">
+        <span class="logo_name">Rydde App</span>
+      </router-link>
+      <i @click="toggleSidebar" class="bx bx-menu menu_icon" v-if="!isMenuOpen"></i>
+    </div>
+
+    <div class="sidebar" :class="{ open: isMenuOpen }">
+      <div class="logo">
+        <span class="logo_name">Rydde App</span>
+        <i @click="toggleSidebar" class="bx bx-menu menu_icon"></i>
+      </div>
+
+      <div class="sidebar_content">
+        <ul class="lists">
+          <li class="list">
+            <router-link class="nav_link" to="/" @click="closeSidebar">
+              <i class="bx bx-home sb_icon"></i>
+              <span class="nav_link_name">Hjem</span>
+            </router-link>
+          </li>
+          <li class="list">
+            <router-link class="nav_link" to="/tasks" @click="closeSidebar">
+              <i class="bx bx-task sb_icon"></i>
+              <span class="nav_link_name">Oppgaver</span>
+            </router-link>
+          </li>
+          <li class="list">
+            <router-link class="nav_link" to="/statistics" @click="closeSidebar">
+              <i class="bx bx-diamond sb_icon"></i>
+              <span class="nav_link_name">Statistikk</span>
+            </router-link>
+          </li>
+        </ul>
+        <ul>
+          <li class="list">
+            <button @click="clearCookies()">
+              <span class="nav_link_name">Log ut</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section v-show="isMenuOpen" class="overlay" v-if="isMenuOpen" @click="closeSidebar"></section>
+</template>
 
 <style scoped>
 

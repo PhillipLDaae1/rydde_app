@@ -1,11 +1,3 @@
-<template>
-  <h1>Dine Oppgaver</h1>
-  <div>
-    <DoneTasksList />
-    <TaskSelector />
-  </div>
-</template>
-
 <script>
 import TaskSelector from '../components/TaskSelector.vue';
 import DoneTasksList from '../components/DoneTasksList.vue';
@@ -17,6 +9,14 @@ export default {
   },
 };
 </script>
+
+<template>
+  <h1>Dine Oppgaver</h1>
+  <div>
+    <TaskSelector />
+    <DoneTasksList />
+  </div>
+</template>
 
 <style scoped>
 

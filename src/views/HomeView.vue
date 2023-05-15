@@ -1,21 +1,14 @@
-<template>
-  <div>
-    <h1>Velkommen, {{ username }}!</h1>
-    <p>This is the home page.</p>
-  </div>
-</template>
-
 <script>
 export default {
   beforeRouteEnter(to, from, next) {
-    // Check for user cookie
+    // Sjekker for bruker Cookie
     const cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1")
 
     if (!cookieValue) {
-      // Redirect to login page if no user cookie found
+      // Redirect til login side hvis ikke bruker funnet
       next({ name: 'LogInPage' })
     } else {
-      // Pass the appropriate username based on the cookie value
+      // Bruk passende brukernavn basert på Cookie value
       let username = ''
 
       if (cookieValue === '1') {
@@ -26,7 +19,7 @@ export default {
         username = 'Default Name'
       }
 
-      // Pass the username as a prop
+      // Bruk brukernavnet som prop
       next(vm => {
         vm.username = username
       })
@@ -40,3 +33,10 @@ export default {
   },
 }
 </script>
+
+<template>
+  <div>
+    <h1>Velkommen, {{ username }}!</h1>
+    <p>Her var det visst litt tomt...</p>
+  </div>
+</template>
