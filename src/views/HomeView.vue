@@ -37,6 +37,6 @@ export default {
 <template>
   <div>
     <h1>Velkommen, {{ username }}!</h1>
-    <p>Her var det visst litt tomt...</p>
+    <h2>Her var det visst tomt...</h2>
   </div>
 </template>

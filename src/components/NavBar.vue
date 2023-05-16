@@ -67,8 +67,8 @@ export default {
         </ul>
         <ul>
           <li class="list">
-            <button @click="clearCookies()">
-              <span class="nav_link_name">Log ut</span>
+            <button class="log_out_button" @click="clearCookies()">
+              <span class="nav_link_name">Logg ut</span>
             </button>
           </li>
         </ul>
@@ -194,5 +194,10 @@ nav .sidebar.open {
 
 .nav_link_name {
   background-color: rgb(46, 46, 46);
+}
+
+.log_out_button {
+  font-size: 20px;
+  border-radius: 0.5rem;
 }
 </style>

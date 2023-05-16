@@ -18,6 +18,7 @@
       this.changeCookieToUsername();
     },
     methods: {
+      // Henter tasks og filtrerer etter userID (Cookies)
       async fetchDoneTasks() {
         const doneSnapshot = await getDocs(collection(db, 'done'));
         const doneData = doneSnapshot.docs
@@ -42,7 +43,7 @@
 
         this.doneTasks = tasksData;
       },
-
+      // Henter totalPoints og hiver det inn i totalPoints
       async fetchTotalPoints() {
         const usersSnapshot = await getDocs(collection(db, 'users'));
         const userDoc = usersSnapshot.docs.find(doc => doc.data().id === this.userID);
@@ -50,7 +51,7 @@
           this.totalPoints = userDoc.data().totalPoints;
         }
       },
-
+      // Endrer Cookie til brukernavn for å vise hvem sine tasks vi viser
       async changeCookieToUsername() {
         if (this.userID === 1) {
           this.username = 'Phillip'

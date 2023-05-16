@@ -18,7 +18,7 @@
   
   <template>
     <div>
-      <h2>Vennligst velg bruker:</h2>
+      <h1>Vennligst velg bruker:</h1>
       <label>
         <input type="radio" v-model="selectedUser" value="1">
         Phillip
@@ -27,9 +27,18 @@
         <input type="radio" v-model="selectedUser" value="2">
         Per-Oskar
       </label>
-      <button @click="login">Login</button>
+      <button @click="login">Logg inn</button>
     </div>
   </template>
   
-  
-  
+<style scoped>
+  label {
+    font-size: 24px;
+  }
+
+  button {
+    font-size: 18px;
+    border-radius: 0.5rem;
+  }
+
+</style>

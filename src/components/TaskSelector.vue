@@ -13,6 +13,7 @@
       this.fetchTasks();
     },
     methods: {
+      // Henter tasks
       async fetchTasks() {
         try {
           const querySnapshot = await getDocs(collection(db, 'tasks'));
@@ -21,6 +22,7 @@
           console.error('Error fetching tasks:', error);
         }
       },
+      // Merker oppgaver som gjort
       async markTaskAsDone(taskID) {
         const userID = parseInt(document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1"), 10);
     
